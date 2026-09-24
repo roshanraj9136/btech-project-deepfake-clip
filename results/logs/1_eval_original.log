@@ -1,0 +1,3 @@
+Loading Pre-trained CLIP ViT-B/16 Vision Transformer...
+saved results\cifar10_original_checkpoint.json
+Original checkpoint test accuracy: 96.42%  (75.2s)

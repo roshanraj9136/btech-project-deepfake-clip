@@ -1,0 +1,42 @@
+{
+  "run": "cifake_sidenet_seed0",
+  "args": {
+    "dataset": "cifake",
+    "epochs": 1,
+    "seed": 0,
+    "batch_size": 128,
+    "lr": 0.001,
+    "weight_decay": 0.0001
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.1387463325381279,
+      "train_acc": 0.94712,
+      "test_loss": 0.08258961038589478,
+      "test_acc": 0.9692,
+      "elapsed_s": 2111.1,
+      "test_auc_fake": 0.99685352
+    }
+  ],
+  "final_test_acc": 0.9692,
+  "per_class_acc": {
+    "FAKE": 0.9534,
+    "REAL": 0.985
+  },
+  "confusion_matrix": [
+    [
+      9534,
+      466
+    ],
+    [
+      150,
+      9850
+    ]
+  ],
+  "params": {
+    "trainable": 1780610,
+    "frozen": 86193152
+  },
+  "seconds": 2111.2
+}

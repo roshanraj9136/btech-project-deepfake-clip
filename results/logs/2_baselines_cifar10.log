@@ -1,0 +1,9 @@
+[cifar10] train 50,000  test 10,000  (0.1s)
+[cifar10] zero-shot: {'single_prompt': {'test_acc': 0.8624}, 'prompt_ensemble': {'test_acc': 0.8674}}  (138.9s)
+[cifar10] features extracted (980.5s)
+[cifar10] linear probe final: acc 95.35%  (1000.5s)
+[cifar10] linear probe L3: acc 72.11%  (1024.1s)
+[cifar10] linear probe L6: acc 83.25%  (1047.0s)
+[cifar10] linear probe L9: acc 89.18%  (1069.8s)
+[cifar10] linear probe L12: acc 95.35%  (1089.4s)
+saved results\cifar10_baselines.json

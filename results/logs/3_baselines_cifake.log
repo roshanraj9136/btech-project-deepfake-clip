@@ -1,0 +1,9 @@
+[cifake] train 30,000  test 20,000  (0.3s)
+[cifake] zero-shot: {'prompt_ensemble': {'test_acc': 0.4918, 'auc_fake': 0.405432245}}  (299.6s)
+[cifake] features extracted (1014.0s)
+[cifake] linear probe final: acc 95.56%  (1025.2s)
+[cifake] linear probe L3: acc 94.96%  (1042.2s)
+[cifake] linear probe L6: acc 96.10%  (1057.2s)
+[cifake] linear probe L9: acc 96.22%  (1070.0s)
+[cifake] linear probe L12: acc 95.57%  (1081.5s)
+saved results\cifake_baselines.json

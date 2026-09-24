@@ -1,0 +1,13 @@
+[cifake_sidenet_seed0] train 100,000  test 20,000
+Loading Pre-trained CLIP ViT-B/16 Vision Transformer...
+[cifake_sidenet_seed0] trainable 1,780,610  frozen 86,193,152
+  epoch 1 batch 100/782  loss 0.3616  train acc 86.08%  (205.7s)
+  epoch 1 batch 200/782  loss 0.2560  train acc 90.16%  (439.2s)
+  epoch 1 batch 300/782  loss 0.2118  train acc 91.82%  (673.2s)
+  epoch 1 batch 400/782  loss 0.1849  train acc 92.89%  (906.1s)
+  epoch 1 batch 500/782  loss 0.1654  train acc 93.65%  (1139.1s)
+  epoch 1 batch 600/782  loss 0.1533  train acc 94.13%  (1373.2s)
+  epoch 1 batch 700/782  loss 0.1456  train acc 94.44%  (1599.7s)
+  epoch 1 batch 782/782  loss 0.1387  train acc 94.71%  (1790.8s)
+==> [cifake_sidenet_seed0] epoch 1: train_loss 0.1387, train_acc 0.9471, test_loss 0.0826, test_acc 0.9692, elapsed_s 2111.1000, test_auc_fake 0.9969
+saved results\cifake_sidenet_seed0.json

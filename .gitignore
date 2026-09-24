@@ -1,0 +1,10 @@
+# cached datasets (created on first run)
+data/
+
+# full checkpoints include a 345 MB copy of frozen CLIP; only trainable weights are committed
+*.pth
+!results/*_trainable_weights.pth
+
+__pycache__/
+*.pyc
+.venv/
