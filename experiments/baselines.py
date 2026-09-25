@@ -84,7 +84,7 @@ def main():
     name = sys.argv[1]
     assert name in ("cifar10", "cifake")
     keep_awake(True)
-    device = torch.device("cuda")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     timer = Timer()
     x_tr, y_tr, x_te, y_te = load_arrays(name)
     if name in TRAIN_LIMIT:  # random subset of the training set for the probes (the test set is always complete)

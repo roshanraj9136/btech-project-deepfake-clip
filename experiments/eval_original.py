@@ -22,7 +22,7 @@ CKPT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(RESULTS_DIR, "cifar10_
 
 def main():
     keep_awake(True)
-    device = torch.device("cuda")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     timer = Timer()
     _, _, x_te, y_te = load_arrays("cifar10")
 

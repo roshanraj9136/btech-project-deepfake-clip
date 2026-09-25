@@ -49,7 +49,7 @@ def main():
     keep_awake(True)
     torch.manual_seed(args.seed)
     rng = np.random.default_rng(args.seed)
-    device = torch.device("cuda")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     classes = CIFAR10_CLASSES if args.dataset == "cifar10" else CIFAKE_CLASSES
     run = f"{args.dataset}_sidenet_seed{args.seed}"
     timer = Timer()
