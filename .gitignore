@@ -8,3 +8,7 @@ data/
 __pycache__/
 *.pyc
 .venv/
+
+# local-only logs
+results/logs/*.err.log
+results/logs/*_interrupted.log

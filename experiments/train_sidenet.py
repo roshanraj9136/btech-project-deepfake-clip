@@ -106,6 +106,8 @@ def main():
         history.append(row)
         print(f"==> [{run}] epoch {epoch}: " + ", ".join(f"{k} {v:.4f}" for k, v in row.items()
                                                           if k != "epoch"), flush=True)
+        # keep per-epoch progress on disk, so an interrupted run still leaves its numbers behind
+        save_json({"run": run, "args": vars(args), "history": history, "complete": False}, f"{run}.json")
 
     pred = probs.argmax(1)
     conf = np.zeros((len(classes), len(classes)), dtype=int)
@@ -115,7 +117,7 @@ def main():
     torch.save({k: v for k, v in model.state_dict().items() if not k.startswith("clip.")},
                os.path.join(RESULTS_DIR, f"{run}_trainable_weights.pth"))
     save_json({
-        "run": run, "args": vars(args), "history": history,
+        "run": run, "args": vars(args), "history": history, "complete": True,
         "final_test_acc": history[-1]["test_acc"],
         "per_class_acc": {c: float(conf[i, i] / conf[i].sum()) for i, c in enumerate(classes)},
         "confusion_matrix": conf.tolist(),

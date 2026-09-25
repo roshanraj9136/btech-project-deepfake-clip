@@ -49,8 +49,10 @@ Each **side block** is a small pre-norm transformer block: a linear layer shrink
 | Zero-shot CLIP, 10 prompts per class | 0 | 86.74% |
 | Linear probe on CLIP's final CLS feature | 7,690 | 95.35% |
 | **Frozen CLIP + side network (this project)** | **1,788,298** | **96.42%** |
+| Same model retrained from scratch (seed 0) | 1,788,298 | 96.41% |
 
 Per epoch (test accuracy): 94.11 → 95.41 → 95.98 → 96.12 → 96.42%. Final train accuracy 98.37%.
+The retrained model (`experiments/train_sidenet.py cifar10 --epochs 5 --seed 0`): 95.15 → 94.15 → 95.93 → 96.08 → **96.41%**, 9,641 vs 9,642 correct. The two models give the same answer on 97.8% of the test images.
 Hardest classes: cat 92.1%, dog 94.7%; cat ↔ dog confusions are 95 of the 358 errors.
 
 A first version that fed the classifier only the side network's averaged tokens (and discarded CLIP's own CLS feature) reached 67.48% after 3 epochs; logs of both runs are in [`results/original_runs/`](results/original_runs/).
@@ -85,6 +87,7 @@ experiments/
   run_all.sh                    runs all of the above in order
 results/
   cifar10_sidenet_trainable_weights.pth   trained side network + classifier (7 MB)
+  cifar10_sidenet_seed0_trainable_weights.pth   the retrained CIFAR-10 model (96.41%)
   cifake_sidenet_seed0_trainable_weights.pth
   *.json                        every reported number, confusion matrices, per-epoch history
   *.npz                         test-set predictions
@@ -109,6 +112,9 @@ python eval_original.py
 python baselines.py cifar10
 python baselines.py cifake
 python train_sidenet.py cifake --epochs 1 --seed 0
+
+# retrain the CIFAR-10 model from scratch (about 1 hour on a laptop GPU)
+python train_sidenet.py cifar10 --epochs 5 --seed 0
 ```
 
 The side network weights files hold only the trainable part; CLIP's frozen weights are loaded from timm (`vit_base_patch16_clip_224.openai`).
@@ -118,7 +124,7 @@ The side network weights files hold only the trainable part; CLIP's frozen weigh
 - ViT-B/16 instead of the paper's ViT-L/14, because of the 4 GB laptop GPU.
 - DFD-FCG's two deepfake-specific parts (facial component guidance and the temporal branch) cannot be tested on CIFAR-10.
 - CIFAKE contains AI-generated object images, not manipulated face videos.
-- One run per setting, so there are no error bars yet.
+- The CIFAR-10 model was trained twice (96.42%, 96.41%); the CIFAKE runs and linear probes only once each.
 
 ## References
 
